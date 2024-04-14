@@ -12,18 +12,26 @@ const list = [
 
 const isLogin = false
 
+// 事件参数e
+const handleClick = (e) => {
+  console.log('button被点击了', e)
+}
+
+// 传入自定义参数
+const handleClick1 = (arg) => {
+  console.log('button被点击了', arg)
+}
+
+// 传入自定义参数 + 事件参数event
+const handleClick2 = (arg, e) => {
+  console.log('button被点击了', arg, e)
+}
+
 function App() {
   return (
     <div className="App">
       this is App
-      <ul>
-        {list.map(item => <li key={item.id}>{item.name}</li>)}
-      </ul>
-
-      {/* 逻辑与 && */}
-      {isLogin && <p>{name}</p>}
-      {/* 三元运算符 */}
-      <p>{isLogin ? <span>jack</span> : <span>loading...</span>}</p>
+      <button onClick={(e) => handleClick2('自定义参数', e)}>按钮</button>
     </div>
   );
 }
