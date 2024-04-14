@@ -4,20 +4,26 @@ function fun1() {
   return '王颖'
 }
 
+const list = [
+  {id:'101', name:'React'},
+  {id:'102', name:'Vue'},
+  {id:'103', name:'Angular'}
+]
+
+const isLogin = false
+
 function App() {
   return (
     <div className="App">
       this is App
-      {/* 使用引号传递字符串 */}
-      {'this is a String'}
-      {/* 识别JS变量 */}
-      {name}
-      {/* 函数调用 */}
-      {fun1()}
-      {/* 方法调用 */}
-      {new Date().getTime()}
-      {/* 使用JS对象 */}
-      <div style={{color:'red'}}>使用JS对象</div>
+      <ul>
+        {list.map(item => <li key={item.id}>{item.name}</li>)}
+      </ul>
+
+      {/* 逻辑与 && */}
+      {isLogin && <p>{name}</p>}
+      {/* 三元运算符 */}
+      <p>{isLogin ? <span>jack</span> : <span>loading...</span>}</p>
     </div>
   );
 }
