@@ -1,5 +1,6 @@
 // useState实现一个计数器按钮
 import {useState} from 'react'
+import './index.css'
 
 const name = '赵静超'
 function fun1() {
@@ -60,6 +61,7 @@ function App() {
     <div className="App">
       <button onClick={handleClick}>{count}</button>
       <button onClick={changeForm}>修改{'  '}{form.name}</button>
+      <span className="foo">我是span标签</span>
     </div>
   );
 }
