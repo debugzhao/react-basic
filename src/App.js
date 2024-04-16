@@ -1,6 +1,6 @@
 import './App.scss'
 import avatar from './images/bozai.png'
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import _ from 'lodash'
 import classNames from 'classnames'
 import {v4 as uuidV4} from 'uuid'
@@ -86,7 +86,8 @@ const App = () => {
   const [type, setType] = useState('hot')
   // 用户新增的评论
   const [content, setContent] = useState('')
-
+  // 评论框dom ref
+  const inputRef = useRef(null)
   const handlerDel = (uid)=> {
     console.log('uid', uid)
     setCommentList(commentList.filter(item => item.user.uid !== uid))
@@ -112,6 +113,10 @@ const App = () => {
         like: 188,
       },
     ])
+    // 1.清空评论框内容
+    setContent('')
+    // 2.重新聚焦评论框
+    inputRef.current.focus()
   }
 
   const handleTabChange = (type)=> {
@@ -164,6 +169,7 @@ const App = () => {
               className="reply-box-textarea"
               placeholder="发一条友善的评论"
               value={content}
+              ref={inputRef}
               onChange={(e) => setContent(e.target.value)}
             />
             {/* 发布按钮 */}
