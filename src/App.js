@@ -1,20 +1,25 @@
 import './App.scss'
 import avatar from './images/bozai.png'
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import _, { divide } from 'lodash'
 import classNames from 'classnames'
 
-// 受控表单绑定
-// 1.通过value属性绑定react状态
-// 2.绑定onChange事件，通过事件参数e拿到输入框最新的值，反向修改react状态
-function App() {
-  const [value, setValue] = useState('')
+// React中获取DOM
+// 1.useRef生成ref对象，绑定到dom标签上
+// 2.dom可用时，ref.current获取dom（渲染完毕之后，dom生成之后才可用）
+const App = ()=> {
+  const inputRef = useRef(null)
+  const showDom = ()=> {
+    console.log(inputRef.current)
+    // 展开属性
+    console.dir(inputRef.current)
+    // 获取input框输入值
+    console.log(inputRef.current.value)
+  }
   return (
     <div>
-      <input value={value}
-        onChange={e => setValue(e.target.value)}
-        type='text'
-      />
+      <input ref={inputRef} type='text'/>
+      <button onClick={showDom}>获取DOM</button>
     </div>
   )
 }
