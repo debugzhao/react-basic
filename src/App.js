@@ -9,18 +9,15 @@ import classNames from 'classnames'
 // 2.子组件通过props接受数据
 const Son = (props)=> {
   console.log(props)
-  // sonCb箭头函数接收父组件传递过来的回调函数
-  const sonCb = () => props.cb()
-  sonCb()
   return (
-    <div>children data, {props.name}, {props.jsx}</div>
+    <div>children data, {props.children}</div>
   )
 }
 function App() {
   const data = 'this is parent component data'
   return (
     <div>
-      <Son 
+      {/* <Son 
         name={data}
         age={18}
         isTrue={false}
@@ -28,7 +25,10 @@ function App() {
         obj={{nickname: 'zjc'}}
         cb={() => {console.log('this is a callback function')}}
         jsx={<span>this is span</span>}
-      />
+      /> */}
+      <Son name={data}>
+        <span>this is span</span>
+      </Son>
     </div>
   )
 }
